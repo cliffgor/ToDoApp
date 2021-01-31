@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "373214783920",
+    "project_id": "todolistapp-9de42",
+    "storage_bucket": "todolistapp-9de42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373214783920:android:054f9dc8995512219e0e75",
+        "android_client_info": {
+          "package_name": "com.cliff.todoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373214783920-9berfdj0jbfjnnjpu5n3n15rgfh3mdfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMx1jlK-Mm6tiPoASvhZJ3H7yz2KJjDwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373214783920-9berfdj0jbfjnnjpu5n3n15rgfh3mdfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
