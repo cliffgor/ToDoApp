@@ -29,6 +29,11 @@ class MainActivity : AppCompatActivity() {
                 val todoItemData = ToDoModel.createList()
                 todoItemData.ItemDataText =textEditText.text.toString()
                 todoItemData.done = false
+
+
+                val newItemData = database.child("todo").push()
+                todoItemData.UID = newItemData.key
+                
             }
             alertDialog.show()
 
