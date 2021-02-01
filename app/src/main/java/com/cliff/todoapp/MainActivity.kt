@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , UpdateAndDelete {
 
     lateinit var database: DatabaseReference
     var toDoList:MutableList<ToDoModel>? = null
@@ -92,6 +92,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        adapter.notifyDataSetChanged()
+
+    }
+
+    override fun modifyItem(itemUID: String, isDone: Boolean) {
+        val itemReference = database.child("todo").child(itemUID)
+        itemReference.child("done").setValue(isDone)
+    }
+
+    override fun onItemDelete(itemUID: String) {
+        val itemReference = database.child("todo").child(itemUID)
+        itemReference.removeValue()
         adapter.notifyDataSetChanged()
 
     }
