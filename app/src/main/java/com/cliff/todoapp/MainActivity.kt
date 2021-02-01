@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() , UpdateAndDelete {
         val fab=findViewById<View>(R.id.fab) as FloatingActionButton
         listViewItem= findViewById<ListView>(R.id.item_listView)
 
-        database = FirebaseDatabase.getInstance().reference
+        database = FirebaseDatabase.getInstance("https://todolistapp-9de42-default-rtdb.firebaseio.com/").reference
         fab.setOnClickListener { View ->
             val alertDialog = AlertDialog.Builder(this)
             val textEditText = EditText(this)
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() , UpdateAndDelete {
 
                 toDoItemData.UID=currentItem.key
                 toDoItemData.done=map.get("done") as Boolean?
-                toDoItemData.ItemDataText=map.get("itemTextData")as String?
+                toDoItemData.ItemDataText=map.get("itemDataText")as String?
                 toDoList!!.add(toDoItemData)
             }
         }

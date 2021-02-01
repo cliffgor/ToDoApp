@@ -10,6 +10,8 @@ class ToDoAdapter(context: Context, toDoList:MutableList<ToDoModel>) : BaseAdapt
 
     private val inflater:LayoutInflater = LayoutInflater.from(context)
     private var itemList = toDoList
+    private var updateAndDelete:UpdateAndDelete = context as UpdateAndDelete
+
     override fun getCount(): Int {
         return itemList.size
     }
@@ -41,6 +43,15 @@ class ToDoAdapter(context: Context, toDoList:MutableList<ToDoModel>) : BaseAdapt
 
         viewHolder.textLabel.text = itemTextData
         viewHolder.isDone.isChecked = done
+
+        viewHolder.isDone.setOnClickListener {
+            updateAndDelete.modifyItem(UID, !done)
+        }
+
+        viewHolder.isDeleted.setOnClickListener{
+            updateAndDelete.onItemDelete(UID)
+        }
+
         return view
 
     }
