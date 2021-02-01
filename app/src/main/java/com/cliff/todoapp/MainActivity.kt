@@ -78,7 +78,21 @@ class MainActivity : AppCompatActivity() {
         if(items.hasNext()) {
             val toDoIndexValue=items.next()
             val itemsIterator = toDoIndexValue.children.iterator()
+
+            while (itemsIterator.hasNext()) {
+                val currentItem=itemsIterator.next()
+                val toDoItemData = ToDoModel.createList()
+                val map = currentItem.getValue() as HashMap<String, Any>
+
+
+                toDoItemData.UID=currentItem.key
+                toDoItemData.done=map.get("done") as Boolean?
+                toDoItemData.ItemDataText=map.get("itemTextData")as String?
+                toDoList!!.add(toDoItemData)
+            }
         }
+
+        
 
     }
 }
