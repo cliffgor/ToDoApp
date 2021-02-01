@@ -6,20 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 
-class ToDoAdapter(context: Context, toDoList:MutableList<ToDoModel>) : BaseAdapter {
+class ToDoAdapter(context: Context, toDoList:MutableList<ToDoModel>) : BaseAdapter() {
 
     private val inflater:LayoutInflater = LayoutInflater.from(context)
     private var itemList = toDoList
     override fun getCount(): Int {
-        TODO("Not yet implemented")
+        return itemList.size
     }
 
     override fun getItem(p0: Int): Any {
-        TODO("Not yet implemented")
+        return itemList.get(p0)
     }
 
     override fun getItemId(p0: Int): Long {
-        TODO("Not yet implemented")
+        return p0.toLong()
     }
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
@@ -31,8 +31,17 @@ class ToDoAdapter(context: Context, toDoList:MutableList<ToDoModel>) : BaseAdapt
         val viewHolder : ListViewHolder
 
         if (p1==null) {
-            view=inflater.inflate()
+            view=inflater.inflate(R.layout.row_itmeslayout,p2, false)
+            viewHolder = ListViewHolder(view)
+            view.tag = viewHolder
+        } else {
+            view=p1
+            viewHolder=view.tag as ListViewHolder
         }
+
+        viewHolder.textLabel.text = itemTextData
+        viewHolder.isDone.isChecked = done
+        return view
 
     }
 
