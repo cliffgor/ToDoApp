@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DatabaseReference
@@ -33,7 +34,13 @@ class MainActivity : AppCompatActivity() {
 
                 val newItemData = database.child("todo").push()
                 todoItemData.UID = newItemData.key
-                
+
+
+                newItemData.setValue(todoItemData)
+
+                dialogue.dismiss()
+                Toast.makeText(this, " Todo item added Successfully", Toast.LENGTH_LONG).show()
+
             }
             alertDialog.show()
 
